@@ -1,74 +1,52 @@
 sampling:
   skin:
-    kernel_open: 20        # pixel opening
+    kernel_open: 20        # morphological opening
     kmeans_k:    5
-    pick:        largest
-    sat_min:     80
-    val_min:     150
+    pick:        largest    # cluster più grande
 
   hair:
     kernel_open: 10
     kmeans_k:    6
     pick:        largest
-    sat_min:     50
-    val_min:     80
 
   lips:
     kernel_open: 5
     kmeans_k:    5
-    pick:        largest
-    sat_min:     60
-    val_min:     100
+    pick:        saturated  # cluster più saturo
 
   eyes:
-    kernel_open: 4
-    kmeans_k:    4         
-    pick:        eyes
-    sat_min:     100
-    val_min:     100
-    crop_radius: 0          
-
+    kernel_open: 1
+    kmeans_k:    6
+    pick:        eyes       # logica speciale per occhi
+    crop_radius: 0
 # ─────────────────────────────────────────────────────────────
-# CONFIGURAZIONE CAMPIONAMENTO COLORI per ciascuna zona (es. occhi, capelli, labbra, pelle)
-
-# Parametri principali:
-
-# 1. kernel_open (int)
-#    -> Dimensione del kernel per morphological opening (pulizia maschera)
-#    -> Valori più alti = maschera più pulita, ma rischio di perdere dettagli piccoli
-#    -> Range consigliato: 3 – 7
-
-# 2. kmeans_k (int)
-#    -> Numero di cluster per KMeans (quanti colori considerare)
-#    -> Valori più alti = più precisione, ma rischio di rumore
-#    -> Range consigliato: 3 – 5
-
-# 3. pick (str)
-#    -> Strategia per selezionare il colore dominante dal clustering
-#       - "bright": cluster con valore L (luminosità) più alto → enfatizza toni chiari
-#       - "saturated": cluster con maggiore saturazione → evidenzia colori intensi
-#       - "largest": cluster con più pixel → utile per aree omogenee (es. capelli)
-#       - "eyes": cluster con hue (tonalità) più alto → utile per occhi colorati
-#    -> Scegli in base alla zona: bright per occhi/pelle, saturated per labbra, etc.
-
-# 4. sat_min (int, 0–255)
-#    -> Soglia minima di saturazione (in HSV)
-#    -> Pixel con saturazione minore vengono ignorati
-#    -> Maggiore = più enfasi su colori vivi, meno su grigi o neutri
-#    -> Range consigliato: 10 – 40
-
-# 5. val_min (int, 0–255)
-#    -> Soglia minima di luminosità (value in HSV)
-#    -> Pixel più scuri di questo valore vengono scartati
-#    -> Maggiore = esclude ombre e neri, enfatizza toni chiari
-#    -> Range consigliato: 40 – 80
-
-# Esempio per occhi più chiari e vivi:
-#   eyes:
-#     kernel_open: 5
-#     kmeans_k: 4
-#     pick: "bright"
-#     sat_min: 10
-#     val_min: 60
-
+# CONFIGURAZIONE CAMPIONAMENTO COLORI (skin, hair, lips, eyes)
+#
+# Con la versione 1.3.2 il filtro HSV usa soglie dinamiche
+# basate sui percentili 10-90 di Saturation e Value → non
+# servono più sat_min e val_min.
+#
+# Parametri rimasti:
+#
+# • kernel_open (int)
+#   Dimensione del kernel per morphological opening della maschera.
+#   Valori più alti = maschera più pulita (possibile perdita dettagli).
+#   Tipico 3-7 (pelle/labbra) oppure 10-20 (capelli).
+#
+# • kmeans_k (int)
+#   Numero di cluster colore da estrarre. 3-6 è la gamma consigliata.
+#
+# • pick (str)
+#   Strategia di scelta del colore dominante:
+#     ─ "largest"     → cluster con più pixel
+#     ─ "bright"      → cluster con LAB-L massimo
+#     ─ "saturated"   → cluster con saturazione massima
+#     ─ "eyes"        → heuristica dedicata agli occhi
+#
+# • crop_radius (int, solo eyes)
+#   Ritaglia un quadrato di raggio N intorno alla pupilla
+#   per evitare ciglia e pelle.
+#
+# Se in futuro vuoi tornare a soglie fisse:
+#   aggiungi sat_min / val_min sotto la regione desiderata.
 # ─────────────────────────────────────────────────────────────
