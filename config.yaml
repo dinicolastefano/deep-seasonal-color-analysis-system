@@ -1,0 +1,74 @@
+sampling:
+  skin:
+    kernel_open: 20        # pixel opening
+    kmeans_k:    5
+    pick:        largest
+    sat_min:     80
+    val_min:     150
+
+  hair:
+    kernel_open: 10
+    kmeans_k:    6
+    pick:        largest
+    sat_min:     50
+    val_min:     80
+
+  lips:
+    kernel_open: 5
+    kmeans_k:    5
+    pick:        largest
+    sat_min:     60
+    val_min:     100
+
+  eyes:
+    kernel_open: 4
+    kmeans_k:    4         
+    pick:        eyes
+    sat_min:     100
+    val_min:     100
+    crop_radius: 0          
+
+# ─────────────────────────────────────────────────────────────
+# CONFIGURAZIONE CAMPIONAMENTO COLORI per ciascuna zona (es. occhi, capelli, labbra, pelle)
+
+# Parametri principali:
+
+# 1. kernel_open (int)
+#    -> Dimensione del kernel per morphological opening (pulizia maschera)
+#    -> Valori più alti = maschera più pulita, ma rischio di perdere dettagli piccoli
+#    -> Range consigliato: 3 – 7
+
+# 2. kmeans_k (int)
+#    -> Numero di cluster per KMeans (quanti colori considerare)
+#    -> Valori più alti = più precisione, ma rischio di rumore
+#    -> Range consigliato: 3 – 5
+
+# 3. pick (str)
+#    -> Strategia per selezionare il colore dominante dal clustering
+#       - "bright": cluster con valore L (luminosità) più alto → enfatizza toni chiari
+#       - "saturated": cluster con maggiore saturazione → evidenzia colori intensi
+#       - "largest": cluster con più pixel → utile per aree omogenee (es. capelli)
+#       - "eyes": cluster con hue (tonalità) più alto → utile per occhi colorati
+#    -> Scegli in base alla zona: bright per occhi/pelle, saturated per labbra, etc.
+
+# 4. sat_min (int, 0–255)
+#    -> Soglia minima di saturazione (in HSV)
+#    -> Pixel con saturazione minore vengono ignorati
+#    -> Maggiore = più enfasi su colori vivi, meno su grigi o neutri
+#    -> Range consigliato: 10 – 40
+
+# 5. val_min (int, 0–255)
+#    -> Soglia minima di luminosità (value in HSV)
+#    -> Pixel più scuri di questo valore vengono scartati
+#    -> Maggiore = esclude ombre e neri, enfatizza toni chiari
+#    -> Range consigliato: 40 – 80
+
+# Esempio per occhi più chiari e vivi:
+#   eyes:
+#     kernel_open: 5
+#     kmeans_k: 4
+#     pick: "bright"
+#     sat_min: 10
+#     val_min: 60
+
+# ─────────────────────────────────────────────────────────────

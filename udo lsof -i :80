@@ -1,0 +1,73 @@
+Jun 15 14:00:58 n8n-selfhost-u46001 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit nginx.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit nginx.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 243283.[0m
+Jun 15 14:00:58 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:00:59 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:00:59 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:01:00 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:01:00 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:01:01 n8n-selfhost-u46001 nginx[846515]: nginx: [emerg] still could not bind()
+Jun 15 14:01:01 n8n-selfhost-u46001 systemd[1]: [0;1;39m[0;1;31m[0;1;39mnginx.service: Control process exited, code=exited, status=1/FAILURE[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit process exited[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAn ExecStart= process belonging to unit nginx.service has exited.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe process' exit code is 'exited' and its exit status is 1.[0m
+Jun 15 14:01:01 n8n-selfhost-u46001 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mnginx.service: Failed with result 'exit-code'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit nginx.service has entered the 'failed' state with result 'exit-code'.[0m
+Jun 15 14:01:01 n8n-selfhost-u46001 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start nginx.service - A high performance web server and a reverse proxy server.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit nginx.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit nginx.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 243283 and the job result is failed.[0m
+Jun 15 14:02:18 n8n-selfhost-u46001 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mnginx.service: Unit cannot be reloaded because it is inactive.[0m
+Jun 15 14:02:53 n8n-selfhost-u46001 systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit nginx.service has begun execution[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit nginx.service has begun execution.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 243388.[0m
+Jun 15 14:02:53 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:02:54 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:02:54 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:02:55 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:02:55 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+Jun 15 14:02:56 n8n-selfhost-u46001 nginx[847589]: nginx: [emerg] still could not bind()
+Jun 15 14:02:56 n8n-selfhost-u46001 systemd[1]: [0;1;39m[0;1;31m[0;1;39mnginx.service: Control process exited, code=exited, status=1/FAILURE[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit process exited[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mAn ExecStart= process belonging to unit nginx.service has exited.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe process' exit code is 'exited' and its exit status is 1.[0m
+Jun 15 14:02:56 n8n-selfhost-u46001 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mnginx.service: Failed with result 'exit-code'.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: Unit failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe unit nginx.service has entered the 'failed' state with result 'exit-code'.[0m
+Jun 15 14:02:56 n8n-selfhost-u46001 systemd[1]: [0;1;31m[0;1;39m[0;1;31mFailed to start nginx.service - A high performance web server and a reverse proxy server.[0m
+[0;38;5;245m░░ [0m[0;32mSubject: A start job for unit nginx.service has failed[0m
+[0;38;5;245m░░[0m [0;32mDefined-By: systemd[0m
+[0;38;5;245m░░[0m [0;32mSupport: http://www.ubuntu.com/support[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mA start job for unit nginx.service has finished with a failure.[0m
+[0;38;5;245m░░[0m [0;32m[0m
+[0;38;5;245m░░[0m [0;32mThe job identifier is 243388 and the job result is failed.[0m

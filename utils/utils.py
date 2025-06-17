@@ -142,3 +142,37 @@ def plot_random_examples(device, model, dataset, n_examples=1, figsize=(12, 6)):
         plt.title('Prediction')
         plt.imshow(from_DHW_to_HWD(
             color_processing.colorize_segmentation_masks(random_predictions[i], segmentation_labels.labels)))
+
+import numpy as np
+import torch
+
+def grey_world(img):
+    """
+    Bilanciamento del bianco ‘grey-world’.
+    - Se riceve torch.Tensor (3,H,W) uint8  ➜  restituisce torch.Tensor (3,H,W) uint8
+    - Se riceve np.ndarray  (H,W,3) uint8   ➜  restituisce np.ndarray  (H,W,3) uint8
+    """
+    tensor_input = isinstance(img, torch.Tensor)
+
+    if tensor_input:                       # tensor ➜ H,W,3 numpy
+        img_np = img.permute(1, 2, 0).cpu().numpy().astype(np.float32)
+    else:                                  # già numpy
+        img_np = img.astype(np.float32)
+
+    mean = img_np.reshape(-1, 3).mean(axis=0)
+    scale = mean.mean() / (mean + 1e-6)
+    balanced_np = np.clip(img_np * scale, 0, 255).astype(np.uint8)
+
+    if tensor_input:                       # torna tensor (3,H,W)
+        return torch.from_numpy(balanced_np).permute(2, 0, 1)
+    return balanced_np
+
+# utils/config.py
+import yaml, os
+
+def load_config(path="config.yaml"):
+    if not os.path.exists(path):
+        raise FileNotFoundError("Config file missing")
+    with open(path, "r") as f:
+        return yaml.safe_load(f)
+CONFIG = load_config()

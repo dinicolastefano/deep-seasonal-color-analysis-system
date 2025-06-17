@@ -227,3 +227,5 @@ def compute_cloth_embedding(cloth_img_masked, max_length=10, ignored_colors=[]):
                 embedding.append(color_triplet)
 
     return torch.tensor(embedding, dtype=torch.uint8).reshape(len(embedding), 3, 1, 1)
+
+
